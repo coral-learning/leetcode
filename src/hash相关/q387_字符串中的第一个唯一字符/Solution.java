@@ -10,10 +10,12 @@ public class Solution {
     public int firstUniqChar(String s) {
         HashMap<Character, Integer> count = new HashMap<>();
         int n = s.length();
+        //统计次数
         for (int i = 0; i < n; i++) {
             char c = s.charAt(i);
             count.put(c, count.getOrDefault(c, 0) + 1);
         }
+        //
 
         for (int i = 0; i < n; i++) {
             if (count.get(s.charAt(i)) == 1) {
@@ -21,5 +23,10 @@ public class Solution {
             }
         }
         return -1;
+    }
+
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+        System.out.println(solution.firstUniqChar("abcdeab"));
     }
 }

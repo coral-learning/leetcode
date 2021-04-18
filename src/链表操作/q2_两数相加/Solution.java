@@ -12,6 +12,7 @@ public class Solution {
         l1 = l1.next;
         l2 = l2.next;
         ListNode temp = rs;
+        //第一次遍历：两个链表对应每个节点分别取和，若含有空节点则空节点取0，产生一个新链表
         while (l1 != null || l2 != null) {
             int a = 0;
             int b = 0;
@@ -34,6 +35,7 @@ public class Solution {
         }
 
         temp = rs;
+        //第一次遍历：两个链表对应每个节点分别取和，若含有空节点则空节点取0，产生一个新链表
         while (temp != null) {
             if (temp.val >= 10) {
                 temp.val = temp.val - 10;
