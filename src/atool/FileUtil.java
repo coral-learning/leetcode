@@ -1,4 +1,4 @@
-package coral;
+package atool;
 
 
 
@@ -23,6 +23,9 @@ public class FileUtil {
     }
 
     public static String read(File file) {
+        if (!file.exists()){
+            return "";
+        }
         StringBuilder content = new StringBuilder();
         BufferedReader reader = null;
         FileReader fileReader = null;
@@ -53,59 +56,6 @@ public class FileUtil {
 
         }
         return content.toString();
-    }
-
-    public static String readLine(String path, int lineNumber) {
-        BufferedReader reader = null;
-        FileReader fileReader = null;
-        int count = 0;
-        try {
-            fileReader = new FileReader(path);
-            reader = new BufferedReader(fileReader);
-            String line;
-            while ((line = reader.readLine()) != null) {
-                if (++count == lineNumber) {
-                    return line;
-                }
-            }
-        } catch (Exception e) {
-
-            e.printStackTrace();
-        } finally {
-            if (fileReader != null) {
-                try {
-                    fileReader.close();
-                } catch (IOException e) {
-
-                }
-
-            }
-            if (reader != null) {
-                try {
-                    reader.close();
-                } catch (IOException e) {
-
-                }
-            }
-
-        }
-        return "";
-    }
-
-    public static void write(String source, String path) {
-        FileWriter fw = null;
-        try {
-            fw = new FileWriter(path);
-            fw.write(source);
-        } catch (Exception e) {
-
-        } finally {
-            try {
-                fw.flush();
-                fw.close();
-            } catch (IOException e) {
-            }
-        }
     }
 
 }
